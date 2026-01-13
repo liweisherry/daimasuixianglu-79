@@ -1,0 +1,25 @@
+# 2026-01-13
+
+## 🧩 Problem
+- Name: Two Sum
+- Link: https://leetcode.com/problems/two-sum/
+- Difficulty: Easy
+
+## 💭 First Thought
+- Brute force O(n²)
+- Use hash map to store seen numbers
+
+## ✅ Final Approach
+- Hash map
+- One pass
+
+## ⚠️ Mistakes / Gotchas
+- Forgot to check complement before insert
+
+## ⏱ Complexity
+- Time: O(n)
+- Space: O(n)
+
+## 🔁 Pattern
+- Hash Table
+- One-pass lookup
