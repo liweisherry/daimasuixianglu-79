@@ -13,3 +13,37 @@
 1. 找到入度为0 的节点，加入结果集
 2. 将该节点从图中移除
 
+## 210. Course Schedule II
+- 题目链接：https://leetcode.com/problems/course-schedule-ii/description/
+
+### 💭 First Thought
+- 建立入度表和一个map，从degree = 0的节点开始用BFS判断，直到遍历完
+- 如何判断有环：结果集里的个数和节点个数是否相等
+
+### ✅ Final Approach
+```
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        inDegree = [0]*numCourses
+        umap = defaultdict(list)
+        for task, pre_task in prerequisites:
+            inDegree[task] += 1
+            umap[pre_task].append(task)
+        queue = deque([i for i in range(numCourses) if inDegree[i] == 0])
+
+        result = []
+        while queue:
+            cur_task = queue.popleft()
+            result.append(cur_task)
+
+            for next_task in umap[cur_task]:
+                inDegree[next_task] -= 1
+                if inDegree[next_task] == 0:
+                    queue.append(next_task)
+        
+        if len(result) == numCourses:
+            return result
+        else:
+            return []
+
+
+```
